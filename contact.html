@@ -22,19 +22,35 @@
     <main>
         <section>
             <p>Email: wahyudi@example.com</p>
-            <p>WhatsApp: +62-812-xxxx-xxxx</p>
-            <form>
+            <p>WhatsApp: <a href="https://wa.me/6285155455388" target="_blank">+62-851-xxxx-xxxx</a></p>
+
+            <!-- Form kirim pesan via WhatsApp -->
+            <form id="waForm">
                 <label for="name">Nama:</label>
                 <input type="text" id="name" name="name" required>
+
                 <label for="message">Pesan:</label>
                 <textarea id="message" name="message" required></textarea>
-                <button type="submit">Kirim</button>
+
+                <button type="submit">Kirim via WhatsApp</button>
             </form>
         </section>
     </main>
     <footer>
         <p>&copy; 2026 Sakura</p>
     </footer>
+
+    <script>
+        document.getElementById("waForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const message = document.getElementById("message").value;
+            const phone = "62812xxxxxxx"; // ganti dengan nomor WA kamu tanpa tanda + atau strip
+
+            const url = `https://wa.me/${phone}?text=Halo, saya ${name}.%0A${message}`;
+            window.open(url, "_blank");
+        });
+    </script>
 </body>
 
 </html>
